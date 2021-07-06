@@ -30,19 +30,14 @@ public class CustomerRepository {
 			//El ResultSet contiene los datos de una fila, y con rowNumber Accedes a uno de esos datos 
 			@Override
 			public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Customer customer = new Customer(); 
+				Customer customer = new Customer(rs.getInt(7)); 
 				//Al objeto customer le estamos asignando la lectura del ResultSet en el indice 1, es decir el Id que se recupera de la Base de Datos
 				customer.setId(rs.getInt(1));
 				customer.setNombre(rs.getString(2));
 				customer.setApellidos(rs.getString(3));
 				customer.setRfc(rs.getString(4));
 				customer.setCorreo(rs.getString(5));
-				
-				Region region = new Region();
-				region.setId(rs.getInt(7));
-				region.setRegion(rs.getString(8));
-				customer.setRegion(region);
-				
+								
 				return customer; 
 			}
 			
@@ -62,25 +57,14 @@ public class CustomerRepository {
 			//El ResultSet contiene los datos de una fila, y con rowNumber Accedes a uno de esos datos 
 			@Override
 			public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Customer customer = new Customer(); 
+				Customer customer = new Customer(rs.getInt(7)); 
 				//Al objeto customer le estamos asignando la lectura del ResultSet en el indice 1, es decir el Id que se recupera de la Base de Datos
 				customer.setId(rs.getInt(1));
 				customer.setNombre(rs.getString(2));
 				customer.setApellidos(rs.getString(3));
 				customer.setRfc(rs.getString(4));
 				customer.setCorreo(rs.getString(5));
-				//QUITAR 
-				System.out.println(rs.getString(5));
-				System.out.println(rs.getString(6));
-				System.out.println(rs.getString(7));
-				System.out.println(rs.getString(8));
-				
-				Region region = new Region();
-				region.setId(rs.getInt(7));
-				region.setRegion(rs.getString(8));
-				customer.setRegion(region);
-				
-				
+								
 				return customer; 
 			}
 			
@@ -99,7 +83,7 @@ public class CustomerRepository {
 				+ "'"+ customer.getApellidos()+"',"
 				+ "'"+ customer.getRfc()+"',"
 				+ "'"+ customer.getCorreo()+"',"
-				+ "'"+ customer.getRegion().getId()+"'"
+				+ "'"+ customer.getId_region()+"'"
 				+");");
 		RespuestaApi msg = new RespuestaApi();
 		msg.setMessage("El cliente ha sido Registrado");
@@ -115,7 +99,7 @@ public class CustomerRepository {
 				+ "apellidos ='"+ customer.getApellidos()+"', "
 				+ "rfc ='"+ customer.getRfc()+"', "
 				+ "correo ='"+ customer.getCorreo()+"', "
-				+ "id_region ='"+ customer.getRegion().getId()+"' "
+				+ "id_region ='"+ customer.getId_region()+"' "
 				+" WHERE id = " + id + ";");
 		
 		RespuestaApi msg = new RespuestaApi();
