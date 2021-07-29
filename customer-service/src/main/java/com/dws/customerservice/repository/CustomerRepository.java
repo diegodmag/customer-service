@@ -48,11 +48,11 @@ public class CustomerRepository {
 		
 	}
 	
-	public Customer getCustomer(int id){
+	public Customer getCustomer(String rfc){
 		Customer customer = new Customer();
 		//Como en el endpoint para ver todos los clientes, el json que se regresa de cada cliente contiene otro json con la region asociada,
 		//Tenemos que modificarlo usando solo RowMapper 
-		customer = jdbcTemplate.queryForObject("SELECT * FROM customer c, region r WHERE c.id_region = r.id AND c.id = "+id+";", new RowMapper<Customer>() {
+		customer = jdbcTemplate.queryForObject("SELECT * FROM customer c, region r WHERE c.id_region = r.id AND c.rfc = '"+rfc+"';", new RowMapper<Customer>() {
 			
 			//El ResultSet contiene los datos de una fila, y con rowNumber Accedes a uno de esos datos 
 			@Override

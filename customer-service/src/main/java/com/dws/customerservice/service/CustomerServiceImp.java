@@ -22,9 +22,9 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
-	public Customer getCustomer(int id) {
+	public Customer getCustomer(String rfc) {
 		// TODO Auto-generated method stub
-		return customerRepository.getCustomer(id) ;
+		return customerRepository.getCustomer(rfc) ;
 	}
 
 	@Override
