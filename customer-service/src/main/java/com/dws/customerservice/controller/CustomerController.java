@@ -27,9 +27,9 @@ public class CustomerController {
 		return new ResponseEntity<>(customerService.getCustomers(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id}") //Para indicar que el metodo recibe un entero id y que NO ES PARTE DE LA URL  se utiiza {id}
-	public ResponseEntity<Object> getCustomer(@PathVariable("id") int id){
-		return new ResponseEntity<>(customerService.getCustomer(id), HttpStatus.OK);
+	@GetMapping("/{rfc}") //Para indicar que el metodo recibe un entero id y que NO ES PARTE DE LA URL  se utiiza {id}
+	public ResponseEntity<Object> getCustomer(@PathVariable("rfc") String rfc){
+		return new ResponseEntity<>(customerService.getCustomer(rfc), HttpStatus.OK);
 	}
 	
 	@PostMapping //Para indicar que el metodo recibe un entero id y que NO ES PARTE DE LA URL  se utiiza {id}
